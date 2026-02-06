@@ -7,7 +7,7 @@
 import { useState, useEffect, type ReactNode } from 'react';
 
 export interface LayoutProps {
-  sidebar: ReactNode;
+  sidebar: ReactNode | ((closeSidebar: () => void) => ReactNode);
   physicalView: ReactNode;
   diffractionPattern: ReactNode;
   groverVisualization: ReactNode;
@@ -38,6 +38,10 @@ export function Layout({
   const isMobile = useIsMobile();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
+  const noop = () => {};
+  const sidebarContent = typeof sidebar === 'function' ? sidebar(noop) : sidebar;
+  const mobileSidebarContent = typeof sidebar === 'function' ? sidebar(() => setSidebarOpen(false)) : sidebar;
+
   if (!isMobile) {
     return (
       <div
@@ -58,7 +62,7 @@ export function Layout({
             backgroundColor: '#111',
           }}
         >
-          {sidebar}
+          {sidebarContent}
         </div>
 
         <div
@@ -153,7 +157,7 @@ export function Layout({
               zIndex: 11,
             }}
           >
-            {sidebar}
+            {mobileSidebarContent}
           </div>
         </>
       )}

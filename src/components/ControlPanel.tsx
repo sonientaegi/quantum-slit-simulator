@@ -26,6 +26,7 @@ export interface ControlPanelProps {
   currentIteration: number;
   isPlaying: boolean;
   togglePlay: () => void;
+  onCloseSidebar?: () => void;
 }
 
 export function ControlPanel({
@@ -43,6 +44,7 @@ export function ControlPanel({
   currentIteration,
   isPlaying,
   togglePlay,
+  onCloseSidebar,
 }: ControlPanelProps) {
   const totalHoles = params.N * params.L;
   const maxC = totalHoles;
@@ -329,7 +331,10 @@ export function ControlPanel({
             </button>
 
             <button
-              onClick={togglePlay}
+              onClick={() => {
+                togglePlay();
+                onCloseSidebar?.();
+              }}
               style={{
                 flex: 1,
                 padding: '8px',

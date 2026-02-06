@@ -21,7 +21,7 @@ export default function App() {
 
   return (
     <Layout
-      sidebar={
+      sidebar={(closeSidebar) => (
         <ControlPanel
           params={sim.params}
           updateParams={sim.updateParams}
@@ -37,8 +37,9 @@ export default function App() {
           currentIteration={sim.currentIteration}
           isPlaying={isPlaying}
           togglePlay={toggle}
+          onCloseSidebar={closeSidebar}
         />
-      }
+      )}
       physicalView={
         <PhysicalView
           holeGrid={sim.holeGrid}
