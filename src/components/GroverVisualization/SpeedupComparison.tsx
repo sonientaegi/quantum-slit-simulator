@@ -22,14 +22,14 @@ export function SpeedupComparison({
       style={{
         backgroundColor: '#222',
         borderRadius: '8px',
-        padding: '16px',
+        padding: '10px',
         color: '#ccc',
       }}
     >
       <h3
         style={{
-          margin: '0 0 16px 0',
-          fontSize: '16px',
+          margin: '0 0 8px 0',
+          fontSize: '14px',
           fontWeight: 'bold',
           color: '#fff',
         }}
@@ -41,7 +41,7 @@ export function SpeedupComparison({
         style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: '12px',
+          gap: '8px',
         }}
       >
         {/* Classical Search */}
@@ -61,7 +61,7 @@ export function SpeedupComparison({
           </div>
           <div
             style={{
-              height: '20px',
+              height: '16px',
               backgroundColor: '#333',
               borderRadius: '4px',
               overflow: 'hidden',
@@ -110,7 +110,7 @@ export function SpeedupComparison({
           </div>
           <div
             style={{
-              height: '20px',
+              height: '16px',
               backgroundColor: '#333',
               borderRadius: '4px',
               overflow: 'hidden',
@@ -145,8 +145,8 @@ export function SpeedupComparison({
         {/* Speedup */}
         <div
           style={{
-            marginTop: '8px',
-            padding: '12px',
+            marginTop: '4px',
+            padding: '8px',
             backgroundColor: '#1a3a1a',
             borderRadius: '4px',
             border: '1px solid #2a5a2a',

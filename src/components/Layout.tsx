@@ -169,13 +169,13 @@ export function Layout({
           backgroundColor: '#000',
         }}
       >
-        <div style={{ height: '250px', flexShrink: 0, backgroundColor: '#0a0a0a' }}>
+        <div style={{ height: '200px', flexShrink: 0, backgroundColor: '#0a0a0a' }}>
           {physicalView}
         </div>
-        <div style={{ height: '250px', flexShrink: 0, backgroundColor: '#0a0a0a' }}>
+        <div style={{ height: '200px', flexShrink: 0, backgroundColor: '#0a0a0a' }}>
           {diffractionPattern}
         </div>
-        <div style={{ height: '300px', flexShrink: 0, backgroundColor: '#0a0a0a' }}>
+        <div style={{ height: '500px', flexShrink: 0, backgroundColor: '#0a0a0a' }}>
           {groverVisualization}
         </div>
       </div>

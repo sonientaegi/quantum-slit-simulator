@@ -64,7 +64,10 @@ function drawAmplitudes(
 ) {
   ctx.clearRect(0, 0, width, height);
 
-  const padding = { left: 60, right: 20, top: 60, bottom: 40 };
+  const compact = height < 250;
+  const padding = compact
+    ? { left: 45, right: 10, top: 36, bottom: 24 }
+    : { left: 60, right: 20, top: 60, bottom: 40 };
   const plotWidth = width - padding.left - padding.right;
   const plotHeight = height - padding.top - padding.bottom;
 
@@ -172,17 +175,26 @@ function drawAmplitudes(
   ctx.textAlign = 'center';
 
   // Title
-  ctx.font = 'bold 14px sans-serif';
-  ctx.fillText(
-    `반복 ${state.iteration} / ${state.optimalIterations}`,
-    width / 2,
-    20
-  );
-  ctx.fillText(
-    `정답 확률: ${(markedProbability * 100).toFixed(1)}%`,
-    width / 2,
-    40
-  );
+  const titleFont = compact ? 'bold 11px sans-serif' : 'bold 14px sans-serif';
+  ctx.font = titleFont;
+  if (compact) {
+    ctx.fillText(
+      `반복 ${state.iteration}/${state.optimalIterations}  |  정답 확률: ${(markedProbability * 100).toFixed(1)}%`,
+      width / 2,
+      14
+    );
+  } else {
+    ctx.fillText(
+      `반복 ${state.iteration} / ${state.optimalIterations}`,
+      width / 2,
+      20
+    );
+    ctx.fillText(
+      `정답 확률: ${(markedProbability * 100).toFixed(1)}%`,
+      width / 2,
+      40
+    );
+  }
 
   ctx.font = '12px sans-serif';
 
@@ -219,13 +231,16 @@ function drawAmplitudes(
 
   // Legend
   ctx.textAlign = 'left';
+  const legendY = compact ? padding.top - 8 : padding.top - 35;
+  const legendFont = compact ? '10px sans-serif' : '12px sans-serif';
+  ctx.font = legendFont;
   ctx.fillStyle = '#FFD700';
-  ctx.fillRect(padding.left, padding.top - 35, 15, 10);
+  ctx.fillRect(padding.left, legendY, 12, 8);
   ctx.fillStyle = '#ccc';
-  ctx.fillText('정답 상태', padding.left + 20, padding.top - 27);
+  ctx.fillText('정답', padding.left + 16, legendY + 8);
 
   ctx.fillStyle = '#4488ff';
-  ctx.fillRect(padding.left + 100, padding.top - 35, 15, 10);
+  ctx.fillRect(padding.left + 55, legendY, 12, 8);
   ctx.fillStyle = '#ccc';
-  ctx.fillText('일반 상태', padding.left + 120, padding.top - 27);
+  ctx.fillText('일반', padding.left + 71, legendY + 8);
 }
